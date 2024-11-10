@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Griffindor extends Hogwarts{
+public class Griffindor extends Hogwarts {
     private int nobility;
     private int honor;
     private int bravery;
@@ -52,7 +52,7 @@ public class Griffindor extends Hogwarts{
 
     @Override
     public String toString() {
-        return  "Griffindor: " + "Благородство =" + nobility +
+        return "Griffindor: " + "Благородство =" + nobility +
                 ", Честь =" + honor + ", Храбрость =" + bravery + ".\n";
 
     }
