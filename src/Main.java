@@ -1,76 +1,61 @@
-import java.util.Objects;
+public class Main {
+    public static void main(String[] args) {
 
-public class Griffindor extends Hogwarts {
-    private int nobility;
-    private int honor;
-    private int bravery;
+        Griffindor[] griffindors = {
+                new Griffindor("Гарри Поттер", 5, 50, 5, 5, 6),
+                new Griffindor("Гермиона Грейнджер", 8, 80, 6, 4, 8),
+                new Griffindor("Рон Уизли", 5, 40, 6, 7, 4),
+        };
 
-    public Griffindor(String name, int thePowerOfMagic, int transgressionDistance, int nobility, int honor, int bravery) {
-        super(name, thePowerOfMagic, transgressionDistance);
-        this.nobility = nobility;
-        this.honor = honor;
-        this.bravery = bravery;
-    }
+        Slytherin[] slytherins = {
+                new Slytherin("Драко Малфой", 5, 60, 5, 4, 6, 4, 2),
+                new Slytherin("Грэхем Монтегю", 3, 20, 4, 3, 4, 5, 3),
+                new Slytherin("Грегори Гойл", 4, 30, 3, 2, 4, 2, 1),
+        };
 
-    public int getNobility() {
-        return nobility;
-    }
+        Hufflepuff[] hufflepuffs = {
+                new Hufflepuff("Захария Смит", 8, 50, 7, 6, 4),
+                new Hufflepuff("Седрик Диггори", 7, 85, 5, 7, 8),
+                new Hufflepuff("Джастин Финч-Флетчли", 6, 70, 4, 6, 4)
+        };
 
-    public void setNobility(int nobility) {
-        this.nobility = nobility;
-    }
+        Ravenclaw[] ravenclaws = {
+                new Ravenclaw("Чжоу Чанг", 6, 55, 4, 6, 4, 3),
+                new Ravenclaw("Падма Патил", 5, 50, 5, 4, 3, 7),
+                new Ravenclaw("Маркус Белби", 4, 60, 7, 6, 3, 2)
+        };
 
-    public int getHonor() {
-        return honor;
-    }
 
-    public void setHonor(int honor) {
-        this.honor = honor;
-    }
+        Hogwarts[] students = new Hogwarts[griffindors.length + slytherins.length + hufflepuffs.length + ravenclaws.length];
 
-    public int getBravery() {
-        return bravery;
-    }
-
-    public void setBravery(int bravery) {
-        this.bravery = bravery;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Griffindor that = (Griffindor) o;
-        return nobility == that.nobility && honor == that.honor && bravery == that.bravery;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), nobility, honor, bravery);
-    }
-
-    @Override
-    public String toString() {
-        return "Griffindor: " + "Благородство =" + nobility +
-                ", Честь =" + honor + ", Храбрость =" + bravery + ".\n";
-
-    }
-
-    // Метод для сравнения учеников Гриффиндора
-    public static void compareGryffindors(Griffindor student1, Griffindor student2, Griffindor student3) {
-        int score1 = student1.bravery + student1.honor + student1.nobility;
-        int score2 = student2.bravery + student2.honor + student2.nobility;
-        int score3 = student3.bravery + student3.honor + student3.nobility;
-
-        if (score1 > score2 && score1 > score3) {
-            System.out.println(student1.getName() + " - лучший ученик Гриффиндор.\n");
-        } else if (score1 < score2 && score2 > score3) {
-            System.out.println(student2.getName() + " - лучший ученик Гриффиндор.\n");
-        } else if (score1 < score3 && score2 < score3) {
-            System.out.println(student2.getName() + " - лучший ученик Гриффиндор.\n");
-        } else {
-            System.out.println("Both are equally good Gryffindors.");
+        int index = 0;
+        for (Hogwarts student : griffindors) {
+            students[index++] = student;
         }
+
+        for (Hogwarts student : slytherins) {
+            students[index++] = student;
+        }
+
+        for (Hogwarts student : hufflepuffs) {
+            students[index++] = student;
+        }
+
+        for (Hogwarts student : ravenclaws) {
+            students[index++] = student;
+        }
+
+        System.out.println("Студенты Хогвартса: ");
+        for (Hogwarts student : students) {
+            System.out.print(student.getName() + ", Мощь Магии: " + student.getThePowerOfMagic() +
+                    ", Расстояние трансгрессии: " + student.getTransgressionDistance() + ", Факультет - " + student);
+        }
+        System.out.println();
+
+        Griffindor.compareGryffindors(griffindors[0], griffindors[1], griffindors[2]);
+        Slytherin.compareSlytherin(slytherins[0], slytherins[1], slytherins[2]);
+        Hufflepuff.compareHufflepuff(hufflepuffs[0], hufflepuffs[1], hufflepuffs[2]);
+        Ravenclaw.compareRavenclaw(ravenclaws[0], ravenclaws[1], ravenclaws[2]);
+        Hogwarts.compareHogwartsStudents(students[5], students[8]);
     }
 }
