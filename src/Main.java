@@ -73,5 +73,4 @@ public class Griffindor extends Hogwarts {
             System.out.println("Both are equally good Gryffindors.");
         }
     }
-
 }
